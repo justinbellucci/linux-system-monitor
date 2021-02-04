@@ -39,7 +39,7 @@ string Process::Command() {
 // Return this process's memory utilization
 string Process::Ram() { 
     long val = std::stol(LinuxParser::Ram(Pid()));
-    val /= 1024; // MB conversion
+    val /= 1000; // MB conversion
     ram_ = std::to_string(val);
     return ram_; }
 

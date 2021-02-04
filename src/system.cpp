@@ -9,10 +9,7 @@
 #include "system.h"
 #include "linux_parser.h" // include the linux_parser code
 
-using std::set;
-using std::size_t;
-using std::string;
-using std::vector;
+using namespace std;
 
 // Return the system's CPU
 Processor& System::Cpu() { return cpu_; }
@@ -21,8 +18,8 @@ Processor& System::Cpu() { return cpu_; }
 // Return a container composed of the system's processes 
 vector<Process> &System::Processes() { 
     vector<int> pids = LinuxParser::Pids();
-    for( const auto &p : pids) {
-    processes_.push_back(Process(p));
+    for( int p : pids) {
+        processes_.emplace_back(Process(p));
     }
     // std::sort(processes_.begin(), processes_.end(), [](Process const &lhs, Process const &rhs) { return lhs < rhs; });
     return processes_; 
