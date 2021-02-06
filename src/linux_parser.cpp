@@ -154,7 +154,7 @@ if(filestream.is_open()){
       linestream >> value;
       // look for item num 14, 15, 16, 17 in stat file
       if(i==kutime_ || i==kstime_ || i==kcutime_ || i==kcstime_ || i==kstarttime_){
-        procTime = std::stof(value) / sysconf(_SC_CLK_TCK);
+        procTime = std::stof(value); // sysconf(_SC_CLK_TCK);
         cpuProcData.push_back(procTime);
       }
     }
