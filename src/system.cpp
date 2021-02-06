@@ -21,7 +21,8 @@ vector<Process> &System::Processes() {
     for( int p : pids) {
         processes_.emplace_back(Process(p));
     }
-    // std::sort(processes_.begin(), processes_.end(), [](Process const &lhs, Process const &rhs) { return lhs < rhs; });
+    // std::sort(processes_.begin(), processes_.end(), [](Process &lhs, Process &rhs) { 
+    //    return lhs.CpuUtilization() < rhs.CpuUtilization(); });
     return processes_; 
 }
 

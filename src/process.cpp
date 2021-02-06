@@ -26,8 +26,8 @@ float Process::CpuUtilization() {
     // totalProcTime = utime + stime + cutime + cstime
     float totalProcTime = cpuProcData[0] + cpuProcData[1] + cpuProcData[2] + cpuProcData[3];
     // elapsedTime in seconds = uptime - starttime
-    float elapsedTime = Process::UpTime() - cpuProcData[4];
-    float cpuProcUsage = 100 * (totalProcTime / sysconf(_SC_CLK_TCK)) / elapsedTime;
+    float elapsedTime = Process::UpTime() - ( cpuProcData[4] / sysconf(_SC_CLK_TCK));
+    float cpuProcUsage = (totalProcTime / sysconf(_SC_CLK_TCK)) / elapsedTime;
     return cpuProcUsage; 
 }
 
